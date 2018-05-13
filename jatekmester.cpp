@@ -5,8 +5,10 @@
 using namespace std;
 using namespace genv;
 
-void Jatekmester::eventHandler(genv::event ev)
+void Jatekmester::ellenorzo()
 {
+
+
 
 }
 
