@@ -37,26 +37,33 @@ int Window::eventloop()
                         }
                     }
                 }
-                for (unsigned i =0 ; i < posboxx.size() ; i++)
-                {
-                    if(lepesszamlalo % 2 == 0)
-                        window.push_back(new Box(posbox_x,posbox_y,1));
-
-                    if(lepesszamlalo % 2 != 0)
-                        window.push_back(new Box(posbox_x,posbox_y,2));
-                    if(posboxx[i] == seged_x[i] && posboxy[i] == seged_y[i])
-                    {
-                        window.pop_back();
-                        posboxx.pop_back();
-                        posboxy.pop_back();
-                        seged_x.pop_back();
-                        seged_y.pop_back();
-                        lepesszamlalo--;
-                    }
-
-                }
                 seged_x.push_back(posbox_x);
                 seged_y.push_back(posbox_y);
+
+                if(lepesszamlalo % 2 == 0)
+                {
+                    window.push_back(new Box(posbox_x,posbox_y,1));
+                }
+
+                if(lepesszamlalo % 2 != 0)
+                {
+                    window.push_back(new Box(posbox_x,posbox_y,2));
+                }
+                for (int i = 0; i < posboxx.size() ; i++)
+                {
+                    if(posboxx[i] == seged_x[i])
+                    {
+                        if(posboxy[i] == seged_y[i])
+                        {
+                            window.pop_back();
+                            posboxx.pop_back();
+                            posboxy.pop_back();
+                            seged_x.pop_back();
+                            seged_y.pop_back();
+                            lepesszamlalo--;
+                        }
+                    }
+                }
             }
         }
 
