@@ -20,8 +20,4 @@ void Box::draw()
             gout << move_to(_posbbox_x*(MAX_X/hszam)+5,_posbbox_y*(MAX_Y/hszam)+5) << box_to((_posbbox_x+1)*(MAX_X/hszam)-5 ,(_posbbox_y+1)*(MAX_Y/hszam)-5);
         }
 }
-void Box::eventHandler(event ev)
-{
-    cout << "asd " << endl;
-}
 

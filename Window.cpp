@@ -18,10 +18,10 @@ int Window::eventloop()
     event ev;
     seged_x.push_back(-1);
     seged_y.push_back(-1);
-    p2x.push_back(-1);
-    p2y.push_back(-1);
-    p1x.push_back(-1);
-    p1y.push_back(-1);
+    p2x.push_back(-3);
+    p2y.push_back(-3);
+    p1x.push_back(-3);
+    p1y.push_back(-3);
     while(gin >> ev && ev.keycode != key_escape)
     {
         if(ev.type == ev_mouse)
@@ -81,35 +81,18 @@ int Window::eventloop()
 
         gout << color(0,0,0) << move_to(0,0) << box(MAX_X+200, MAX_Y);
 
-//átlós ellenõrzés kezd.
-        if(jm->ellenorzo(p1x,p1y) == true)
+//ellenõrzés kezd.
+        if(jm->ellenorzo(p2x,p2y) == true)
         {
             gout << color(255,255,255);
             gout << move_to(MAX_X+20 , 100) << text("player 1 nyert");
         }
-        if(jm->ellenorzo(p2x,p2y) == true)
+        if(jm->ellenorzo(p1x,p1y) == true)
         {
             gout << color(255,255,255);
             gout << move_to(MAX_X+20 , 100) << text("player 2 nyert");
         }
-//átlós ell. vég
-
-//vizszintes ell kezd.
-        /*
-                if(jm->ellenorzo(p1y,p1x) == true)
-                {
-                    gout << color(255,255,255);
-                    gout << move_to(MAX_X+20 , 100) << text("player 1 nyert");
-                }
-
-                if(jm->ellenorzo(p2y,p2x) == true)
-                {
-                    gout << color(255,255,255);
-                    gout << move_to(MAX_X+20 , 100) << text("player 2 nyert");
-                }
-                */
-//vizszintes ell. vég
-
+//ell. vég
 
         for(Window * w : window)
         {
@@ -117,6 +100,8 @@ int Window::eventloop()
         }
         jt->draw();
         gout << refresh;
+
+
         if(ev.type == ev_key)
         {
             if(ev.keycode == key_backspace)
@@ -139,6 +124,7 @@ int Window::eventloop()
             }
         }
     }
+
     delete jt;
     delete jm;
     for(Window *w : window)

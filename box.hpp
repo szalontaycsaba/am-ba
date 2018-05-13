@@ -1,8 +1,8 @@
 #ifndef BOX_HPP_INCLUDED
 #define BOX_HPP_INCLUDED
-#include "jatekmester.hpp"
+#include "Window.hpp"
 
-class Box : public Jatekmester
+class Box : public Window
 {
 protected :
 int _posbbox_x;
@@ -12,7 +12,6 @@ public :
     Box(int _posbbox_x ,int  _posbbox_y,int _click);
     ~Box(){}
     void draw();
-    void eventHandler(genv::event ev);
 };
 
 #endif // BOX_HPP_INCLUDED

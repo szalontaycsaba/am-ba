@@ -1,7 +1,7 @@
 #include "graphics.hpp"
 #include "Window.hpp"
 #include "jatekmester.hpp"
-#include<algorithm>
+#include <algorithm>
 
 
 using namespace std;
@@ -11,43 +11,59 @@ bool Jatekmester::ellenorzo(std::vector<int> myvec,std::vector<int> myvec2)
 {
     sort(myvec.begin(),myvec.end());
     sort(myvec2.begin(),myvec2.end());
-    pw=1;
-    for(unsigned i = 0 ; i < myvec.size()-1 ; i++)
+
+    if(myvec.size() > 5)
+    {
+        cout << "asd ";
+        pw=1;
+        for(unsigned i = 1 ; i < myvec.size()-1 ; i++)
         {
-            if(myvec[i] == myvec[i+1]-1 && myvec2[i] == myvec2[i+1]-1 )
+            pw = 1;
+            for(unsigned j = 1 ; j < myvec.size()-1 ; j++)
             {
-                pw++;
-                if(pw == 5)
+                if(myvec[i] == (myvec[i+j])-j && myvec2[i] == (myvec2[i+j])-j)
                 {
-                    return true;
-                }
-            }
-        }
-    pw=1;
-    for(unsigned i = 0 ; i < myvec.size()-1 ; i++)
-        {
-            if(myvec[i] == myvec[i+1]-1 && myvec2[i] == myvec2[i+1])
-            {
-                pw++;
-                if(pw == 5)
-                {
-                    return true;
+                    pw++;
+                    if(pw == 5)
+                    {
+                        return true;
+                    }
                 }
             }
         }
         pw=1;
-    for(unsigned i = 0 ; i < myvec.size()-1 ; i++)
+        for(unsigned i = 1 ; i < myvec.size()-1 ; i++)
         {
-            if(myvec2[i] == myvec2[i+1]-1 && myvec[i] == myvec[i+1])
+            pw = 1;
+            for(unsigned j = 1 ; j < myvec.size()-1 ; j++)
             {
-                pw++;
-                if(pw == 5)
+                if(myvec[i] == (myvec[i+j])-j && myvec2[i] == myvec2[i+j])
                 {
-                    return true;
+                    pw++;
+                    if(pw == 5)
+                    {
+                        return true;
+                    }
                 }
             }
         }
-
+        pw=1;
+        for(unsigned i = 1 ; i < myvec.size()-1 ; i++)
+        {
+            pw = 1;
+            for(unsigned j = 1 ; j < myvec.size()-1 ; j++)
+            {
+                if(myvec2[i] == (myvec2[i+j])-j && myvec[i] == myvec[i+j])
+                {
+                    pw++;
+                    if(pw == 5)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
     return false;
 }
 

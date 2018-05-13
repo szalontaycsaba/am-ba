@@ -7,6 +7,10 @@ using namespace genv;
 
 void Jter::draw()
 {
+    gout << color(255,0,255);
+    gout << move_to(MAX_X+20 , 240) << text("player 1") << move_to(MAX_X+100 , 225) << box(20,20);
+    gout << color(255,255,255);
+    gout << move_to(MAX_X+20 , 265) << text("player 2") <<move_to(MAX_X+100 , 250) << box(20,20);
     for (int i = 1 ; i < hszam+1 ; i++)
     {
         gout << move_to(MAX_X+20 , 200) << text("Press backspace to");
@@ -17,6 +21,4 @@ void Jter::draw()
         gout << move_to(0,(MAX_Y/hszam)*i);
         gout << line_to(MAX_X,(MAX_Y/hszam)*i);
     }
-
-
 }
